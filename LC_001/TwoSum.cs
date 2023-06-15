@@ -1,4 +1,4 @@
-namespace LeetCode.LC_705;
+namespace LeetCode.LC_001;
 
 public class Solution
 {
