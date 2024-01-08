@@ -4,7 +4,46 @@ public class Solution
 {
     public int CoinChange(int[] coins, int amount)
     {
-        var weights = new int[amount+1];
+        Array.Sort(coins);
+
+        var weights = new int[amount + 1];
+        Array.Fill(weights, -1);
+        weights[0] = 0;
+
+        for (var i = coins.Length - 1; i >= 0; i--)
+        {
+            var coin = coins[i];
+            for (var currentValue = 0; currentValue <= amount; currentValue++)
+            {
+                if (weights[currentValue] == -1)
+                {
+                    continue;
+                }
+
+                var nextValue = currentValue + coin;
+                var nextWeight = weights[currentValue] + 1;
+
+                if (nextValue > amount)
+                {
+                    break;
+                }
+
+                if (weights[nextValue] == -1 || weights[nextValue] > nextWeight)
+                {
+                    weights[nextValue] = nextWeight;
+                }
+            }
+        }
+
+        return weights[amount];
+    }
+}
+
+public class SolutionV1
+{
+    public int CoinChange(int[] coins, int amount)
+    {
+        var weights = new int[amount + 1];
         foreach (var coin in coins)
         {
             if (coin <= amount)
