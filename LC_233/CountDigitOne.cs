@@ -9,6 +9,11 @@ public class Solution
 
     public long CountDigit(long maxNumber, int digitToCount)
     {
+        if (digitToCount == 0)
+        {
+            throw new NotImplementedException();
+        }
+
         var totalSum = 0L;
 
         var divisor = 1; // 1 for last digit, 10 for second last digit, etc.
@@ -50,6 +55,10 @@ public class TestCases
     [TestCase(50,2,15)]
     [TestCase(12,2,2)]
     [TestCase(3,2,1)]
+    [TestCase(0, 0, 1)]
+    [TestCase(10, 0, 2)]
+    [TestCase(20, 0, 3)]
+    [TestCase(100, 0, 3)]
     public void Test1(long maxNumber, int digitToCount, long expected)
     {
         var solution = new Solution();
