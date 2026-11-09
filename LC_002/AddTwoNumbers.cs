@@ -1,4 +1,4 @@
-﻿namespace LeetCode.LC_002;
+﻿namespace LC_002;
 
 public class ListNode
 {
